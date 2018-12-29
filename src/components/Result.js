@@ -8,6 +8,7 @@ class Result extends React.Component {
         var events = this.props.events;
         var eventsList = ['No concerts found!'];
 
+        // if concerts are found, map them to Concert components
         if (events !== undefined && events.length !== 0) {
             eventsList = events.map(function(event, index){
                 return <Concert key={index} concert={event} />;
@@ -15,10 +16,9 @@ class Result extends React.Component {
         }
 
         return (
-            <div>
-                <img />
+            <div style={{padding:'13%'}}>
                 <h3>There are {events && events.length} concerts with your favourite artists near you: </h3>
-                <ul>{eventsList}</ul>
+                {eventsList}
             </div>
         );
     }

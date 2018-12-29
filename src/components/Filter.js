@@ -5,7 +5,7 @@ class Filter extends React.Component {
         return (
             <div>
                 <img />
-                Location: 
+                Your location: 
                 <input type="text"/>
             </div>
         );

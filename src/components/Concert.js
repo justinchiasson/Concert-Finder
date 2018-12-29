@@ -4,8 +4,8 @@ class Concert extends React.Component {
     render() {
         return (
             <div>
-                Event: {this.props.concert.name}
-                Artist: {this.props.concert.artist} 
+                Event: {this.props.concert.name + " "}
+                Artist: {this.props.concert.artist + "  "} 
                 Date: {this.props.concert.date}
             </div>
         );
