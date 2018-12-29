@@ -16,7 +16,7 @@ class Result extends React.Component {
         }
 
         return (
-            <div style={{padding:'13%'}}>
+            <div style={{padding:'13%', paddingTop:'5%'}}>
                 <h3>There are {events && events.length} concerts with your favourite artists near you: </h3>
                 {eventsList}
             </div>

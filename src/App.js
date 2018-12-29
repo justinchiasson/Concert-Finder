@@ -53,9 +53,16 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    var spotifyToken = new URLSearchParams(window.location.search).get('access_token');
+    console.log(spotifyToken);
+
+    fetch('https://api.spotify.com/v1/me/top/artists', {
+      headers: {'Authorization': 'Bearer ' + spotifyToken}
+    }).then(response => response.json())
+    .then(data => this.setState({artists: data.items}));
+
     this.setState({
       name: fakeServerData.user.name,
-      artists: fakeServerData.artists,
       events: fakeServerData.events
     });
   }

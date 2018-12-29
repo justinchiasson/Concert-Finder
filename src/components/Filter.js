@@ -3,7 +3,7 @@ import React from "react";
 class Filter extends React.Component {
     render() {
         return (
-            <div>
+            <div style={{textAlign:'center'}}>
                 <img />
                 Your location: 
                 <input type="text"/>
