@@ -5,8 +5,8 @@ class Concert extends React.Component {
         return (
             <div>
                 Event: {this.props.concert.name + " "}
-                Artist: {this.props.concert.artist + "  "} 
-                Date: {this.props.concert.date}
+                Venue: {this.props.concert._embedded.venues[0].name + "  "} 
+                Date: {this.props.concert.dates.start.localDate}
             </div>
         );
     }
