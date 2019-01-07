@@ -20,6 +20,6 @@ Concert Finder also uses the following part of the Ticketmaster Discovery API V2
 
 - `npm install`
 - `yarn start`
-- visit localhost:3000 and sign in with your Spotify account
+- Visit localhost:3000 and sign in with your Spotify account
 
-Application is based on [create-react-app] (https://github.com/facebook/create-react-app)
+Application is based on [create-react-app](https://github.com/facebook/create-react-app/)
