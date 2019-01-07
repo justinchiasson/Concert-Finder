@@ -1,6 +1,6 @@
 # Concert Finder
 
-This application uses the Spotify Web API to discover a user's favourite artists. It then uses the Ticketmaster Discovery API to notify the user of upcoming concerts featuring these artists, near a specified location!
+With React and React Router, this web application uses the Spotify Web API to discover a user's favourite artists. It then uses the Ticketmaster Discovery API to notify the user of upcoming concerts featuring these artists, near a specified location!
 
 ## Spotify API
 

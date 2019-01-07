@@ -19,30 +19,33 @@ class Home extends React.Component {
     */
     getConcerts = async (e) => {
         e.preventDefault();
+        // check if search bar is empty, prevents spam of ticketmaster api
+        if (e.target.elements.location.value) {
 
-        // disable search bar to prevent doubling api requests (rate limited to 5/sec)
-        this.setState({ isSearchDisabled: true });
+            // disable search bar to prevent doubling api requests (rate limited to 5/sec)
+            this.setState({ isSearchDisabled: true });
 
-        // reset state of events
-        this.setState({ events: [] });
+            // reset state of events
+            this.setState({ events: [] });
 
-        var that = this;
-        const url = 'https://app.ticketmaster.com/discovery/v2/events?apikey=pf7MhdBGU66LlGwzxw6cXnzqyz8MpWj7';
-        const city = e.target.elements.location.value;
-        const radius = '100';
+            var that = this;
+            const url = 'https://app.ticketmaster.com/discovery/v2/events?apikey=pf7MhdBGU66LlGwzxw6cXnzqyz8MpWj7';
+            const city = e.target.elements.location.value;
+            const radius = '100';
 
-        var iterator = 0;
-        var limiter = setInterval(getter, 250);
-        function getter() {
-            if (iterator >= that.state.artists.length) {
-                clearInterval(limiter);
-                that.setState({ isSearchDisabled: false });
-            } else {
-                var new_url = url + '&keyword=' + that.state.artists[iterator].name + '&radius=' + radius + '&city=' + city;
-                fetch(new_url)
-                    .then(response => response.json())
-                    .then(data => data._embedded && that.setState({ events: that.state.events.concat(data._embedded.events) }));
-                iterator++;
+            var iterator = 0;
+            var limiter = setInterval(getter, 250);
+            function getter() {
+                if (iterator >= that.state.artists.length) {
+                    clearInterval(limiter);
+                    that.setState({ isSearchDisabled: false });
+                } else {
+                    var new_url = url + '&keyword=' + that.state.artists[iterator].name + '&radius=' + radius + '&city=' + city;
+                    fetch(new_url)
+                        .then(response => response.json())
+                        .then(data => data._embedded && that.setState({ events: that.state.events.concat(data._embedded.events) }));
+                    iterator++;
+                }
             }
         }
     }
@@ -53,11 +56,11 @@ class Home extends React.Component {
         }
         var spotifyToken = hash.split('=')[1].split('&')[0];
         fetch('https://api.spotify.com/v1/me', {
-                headers: { 'Authorization': 'Bearer ' + spotifyToken }
-            }).then(function(response) {
-                if (response.status === 401);
-                return false;
-            });
+            headers: { 'Authorization': 'Bearer ' + spotifyToken }
+        }).then(function (response) {
+            if (response.status === 401);
+            return false;
+        });
         return true;
     }
 
