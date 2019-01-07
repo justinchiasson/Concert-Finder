@@ -10,7 +10,8 @@ class Home extends React.Component {
         name: undefined,
         artists: undefined,
         events: [],
-        isSearchDisabled: false
+        isSearchDisabled: false,
+        isFinished: true
     }
 
     /*  Gets concerts from Ticketmaster API for each artist in state.artists based on city entered in Filter
@@ -28,6 +29,9 @@ class Home extends React.Component {
             // reset state of events
             this.setState({ events: [] });
 
+            // wait for all searches to complete
+            this.setState({ isFinished: false });
+
             var that = this;
             const url = 'https://app.ticketmaster.com/discovery/v2/events?apikey=pf7MhdBGU66LlGwzxw6cXnzqyz8MpWj7';
             const city = e.target.elements.location.value;
@@ -39,6 +43,7 @@ class Home extends React.Component {
                 if (iterator >= that.state.artists.length) {
                     clearInterval(limiter);
                     that.setState({ isSearchDisabled: false });
+                    that.setState({ isFinished: true });
                 } else {
                     var new_url = url + '&keyword=' + that.state.artists[iterator].name + '&radius=' + radius + '&city=' + city;
                     fetch(new_url)
@@ -94,18 +99,21 @@ class Home extends React.Component {
     render() {
         return (
             <div>
+                <div style={{ padding:'1%'}}>
                 <button onClick={this.logout}>
                     Log out of Spotify
                 </button>
+                </div>
                 <Title />
                 <Filter
                     name={this.state.name}
                     isSearchDisabled={this.state.isSearchDisabled}
                     getConcerts={this.getConcerts}
                 />
-                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <div style={{ display: 'flex', flexDirection: 'row', height: '70vh' }}>
                     <Result
                         events={this.state.events && this.state.events}
+                        isFinished={this.state.isFinished}
                     />
                     <TopArtists
                         artists={this.state.artists && this.state.artists}
