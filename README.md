@@ -15,3 +15,11 @@ Concert Finder uses the following parts of the Spotify Web API:
 Concert Finder also uses the following part of the Ticketmaster Discovery API V2.0:
 
 - [Event Search](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/#search-events-v2)
+
+## Development
+
+- `npm install`
+- `yarn start`
+- visit localhost:3000 and sign in with your Spotify account
+
+Application is based on [create-react-app] (https://github.com/facebook/create-react-app)
