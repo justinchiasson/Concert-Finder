@@ -1,6 +1,12 @@
 import React from "react";
 
+import './Auth.css';
+
 import Title from "../Title";
+
+import Button from '@material-ui/core/Button'
+import Fab from '@material-ui/core/Fab'
+import Backdrop from '@material-ui/core/Backdrop';
 
 class Auth extends React.Component {
 
@@ -28,10 +34,13 @@ class Auth extends React.Component {
     render() {
         return (
             <div>
+                <img className="bg" src={require('../../assets/images/bg1.jpg')}></img>
                 <Title />
-                <button onClick={this.redirect}>
-                    Sign in with Spotify
-                </button>
+                <div style={{ textAlign: 'center' }}>
+                    <Fab size='large' variant='extended' onClick={this.redirect}>
+                        Sign in with Spotify
+                    </Fab>
+                </div>
             </div>
         );
     }

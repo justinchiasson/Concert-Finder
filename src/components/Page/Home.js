@@ -1,9 +1,13 @@
 import React from "react";
 
+import "./Home.css";
+
 import Title from "../Title";
 import Filter from "../Filter";
 import Result from "../Result";
 import TopArtists from "../TopArtists"
+
+import Button from '@material-ui/core/Button';
 
 class Home extends React.Component {
     state = {
@@ -100,9 +104,9 @@ class Home extends React.Component {
         return (
             <div>
                 <div style={{ padding:'1%'}}>
-                <button onClick={this.logout}>
+                <Button onClick={this.logout}>
                     Log out of Spotify
-                </button>
+                </Button>
                 </div>
                 <Title />
                 <Filter
